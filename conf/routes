@@ -3,8 +3,14 @@
 # ~~~~
 
 # Home page
+GET     /metrics              controller.PrometheusController.getMetrics
+
 GET     /                     controller.Application.health()
 
 GET     /books/:serial        controller.BookController.findBookBySerial(serial: Long)
 
+GET     /books                controller.BookController.findAllBooks()
+
 POST    /books                controller.BookController.saveBook()
+
+POST    /gauge                controller.GaugeController.startGauge()

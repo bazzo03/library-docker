@@ -14,7 +14,9 @@ libraryDependencies ++= Seq(
   javaWs,
   "com.h2database"          %         "h2"                        %         "1.4.197",
   javaJpa,
-  "org.hibernate"           %         "hibernate-entitymanager"   %         "5.1.0.Final"
+  "org.hibernate"           %         "hibernate-entitymanager"   %         "5.1.0.Final",
+  "com.github.stijndehaes"  %%        "play-prometheus-filters"   %         "0.4.0",
+  "io.prometheus" % "simpleclient" % "0.4.0"
 
 
 

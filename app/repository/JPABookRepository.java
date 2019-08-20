@@ -8,6 +8,7 @@ import play.db.jpa.JPAApi;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.inject.Inject;
@@ -46,14 +47,22 @@ public class JPABookRepository implements BookRepository {
     @Override
     public CompletableFuture<BookEntity> findBookBySerial(Long serial) {
 	
-	return supplyAsync(() -> wrap(em -> {
-	    return listBySerial(serial, em);
-	}), executionContext) ;
+        return supplyAsync(() -> wrap(em -> {
+            return listBySerial(serial, em);
+        }), executionContext) ;
     }
     
     @Override
     public void save(BookEntity bookEntity) {
     
         supplyAsync(() -> wrap(em -> insert(em, bookEntity)), executionContext);
+    }
+
+    @Override
+    public CompletableFuture<List<BookEntity>> findAllBooks() {
+
+        return supplyAsync(() -> wrap(em -> {
+            return list(em).collect(Collectors.toList());
+        }), executionContext) ;
     }
 }

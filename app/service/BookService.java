@@ -6,6 +6,7 @@ import entity.BookEntity;
 import repository.BookRepository;
 import dto.BookDto;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class BookService {
@@ -23,5 +24,9 @@ public class BookService {
         
         System.out.println(serial);
         return bookRepository.findBookBySerial(serial);
+    }
+
+    public CompletableFuture<List<BookEntity>> findAllBooks() {
+        return bookRepository.findAllBooks();
     }
 }
