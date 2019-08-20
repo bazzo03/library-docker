@@ -1,0 +1,5 @@
+package filter
+
+class MyFilters {
+
+}
